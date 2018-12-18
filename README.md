@@ -9,6 +9,7 @@ This is the complete golang repo example for AWS SAM trying to conver working co
 - Golang
 - AWS CLI
 - AWS SAM CLI
+- Docker
 
 ## Useful Commands
 
@@ -20,4 +21,8 @@ The `Makefile` contains many useful commands.
 
 ### `clean`
 
-`make clean` provides and easy way to delete all the binaries built with `make build`. It is not often required to run this comamand as it is always run before `build`
+`make clean` provides an easy way to delete all the binaries built with `make build`. It is not often required to run this comamand as it is always run before `build`
+
+### `local`
+
+`make local` provides an easy way to run the api locally for testing. This is essentially an alias for `sam local start-api` but also cleans and builds the binaries.

@@ -1,6 +1,6 @@
 BINARIES=$$(go list ./cmd/...)
 
-.PHONY: deps clean build
+.PHONY: deps clean build local
 
 deps:
 	go get -u ./...
@@ -15,3 +15,5 @@ build: clean
 		GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o $${cmd#*/}/$${cmd##*/} $${cmd} ; \
     done
 	
+local: build
+	@sam local start-api

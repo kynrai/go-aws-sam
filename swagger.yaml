@@ -1,0 +1,34 @@
+swagger: '2.0'
+info:
+  title: Go AWS SAM API - ( STAGE )
+  description: Go AWS SAM example API gateway
+  version: 1.0.0
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+basePath: /v1
+paths:
+  /hello:
+    get:
+      summary: Summary
+      # description: >-
+      #   Description
+      # parameters:
+      #   - in: path
+      #     name: id
+      #     type: string
+      #     required: true
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        uri: arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:ACCOUNT_ID_HERE:function:${stageVariables.ThingGet}/invocations
+        httpMethod: POST
+        responses:
+          default:
+            statusCode: 200
+      responses:
+        '200':
+          # description: >-
+          #   Description

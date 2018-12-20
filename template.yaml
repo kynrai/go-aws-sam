@@ -1,14 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  datalake
+  Go AWS SAM
   
-  Sample SAM Template for datalake
+  Golang examples of AWS SAM
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
+    Runtime: go1.x
     Timeout: 5
+    AutoPublishAlias: prod # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/automating-updates-to-serverless-apps.html
+    Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
 
 Resources:
   HelloWorldFunction:
@@ -16,10 +19,8 @@ Resources:
     Properties:
       CodeUri: cmd/helloworld
       Handler: helloworld
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
       Events:
-        CatchAll:
+        HTTPS:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /hello
@@ -33,15 +34,13 @@ Resources:
     Properties:
       CodeUri: cmd/sample
       Handler: sample
-      Runtime: go1.x
-      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
       Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+        HTTPS:
+          Type: Api
           Properties:
             Path: /sample
             Method: GET
-      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+      Environment:
         Variables:
           PARAM1: VALUE
 

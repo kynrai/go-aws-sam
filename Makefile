@@ -6,15 +6,11 @@ STACK_NAME=go-aws-sam
 deps:
 	go get -u ./...
 
-clean: 
-	@for cmd in $(BINARIES) ; do \
-		rm $${cmd#*/}/$${cmd##*/} || true ; \
-    done
+clean:
+	@./scripts/build.sh clean
 	
 build: clean
-	@for cmd in $(BINARIES) ; do \
-		GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o $${cmd#*/}/$${cmd##*/} $${cmd} ; \
-    done
+	@./scripts/build.sh build
 	
 local: build
 	@sam local start-api

@@ -2,6 +2,10 @@
 
 WIP: This is udner heavy and active develoment as I learn about each AWS SAM resource
 
+Curently on hold until AWS resolve some critical issues like:
+
+Until a suitable solution for [multiple-env deploys](https://github.com/awslabs/serverless-application-model/issues/198) is implemented, the AWS SAW experiance is going to pale in comparrison to more broad frameworks like [apex/up](https://up.docs.apex.sh/)
+
 This is the complete golang repo example for AWS SAM trying to conver working code examples for as many of the features of SAM as possible.
 
 ## Prerequisites

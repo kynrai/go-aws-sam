@@ -7,6 +7,7 @@ function clean {
 	for cmd in $(go list ./cmd/...) ; do
 		rm ${cmd#*/}/${cmd##*/} || true ;
     done
+    rm deploy-template.yaml || true
 }
 
 function build {
@@ -24,7 +25,6 @@ case "${1}" in
         *)
             echo $"Usage: $0 {clean|build}"
             exit 1
- 
 esac
 
 printf -- '\n';

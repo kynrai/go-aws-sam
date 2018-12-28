@@ -2,7 +2,7 @@
 
 WIP: This is udner heavy and active develoment as I learn about each AWS SAM resource
 
-Curently on hold until AWS resolve some critical issues like:
+**Curently on hold until AWS resolve some critical issues like:**
 
 Until a suitable solution for [multiple-env deploys](https://github.com/awslabs/serverless-application-model/issues/198) is implemented, the AWS SAW experiance is going to pale in comparrison to more broad frameworks like [apex/up](https://up.docs.apex.sh/)
 
@@ -30,3 +30,7 @@ The `Makefile` contains many useful commands.
 ### `local`
 
 `make local` provides an easy way to run the api locally for testing. This is essentially an alias for `sam local start-api` but also cleans and builds the binaries.
+
+### `deploy`
+
+`make deploy` provides an easy way to package and deploy the functions. This will clean, build, package and deploy the functions to AWS.
